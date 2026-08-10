@@ -60,3 +60,17 @@ This project is intended for learning wireless security concepts. Always test on
 
 Crack ด้วย aircrack-ng
 รัน aircrack-ng capture-01.cap -w /usr/share/wordlists/rockyou.txt ไล้ทดเดารหัสจากลิสต์เทียบ MIC จนกว่าจะเจอคำที่ตรง (ถ้าเจอ error ว่า ESSID is required เพราะไม่มี beacon frame ติดมา ให้เตีม -e <ชื่อ WiFi> ท้ายคำสั่ง)
+
+
+## Photo
+หา BSSID: คอลัมน์นี้คือ MAC Address ของ Router (Access Point) แต่ละตัว เช่น 66:20:E1:18:2F:0E
+CH (Channel): คอลัมน์นี้คือ ช่องสัญญาณ ที่ Router ตัวนั้นกำลังทำงานอยู่ เช่น ช่อง 7, 5, 3
+ESSID: คือชื่อของ Wi-Fi (Network Name) ที่เราคุ้นเคย เช่น 5817_2.4G
+ENC / AUTH: บอกถึงประเภทการเข้ารหัสความปลอดภัย ซึ่งในภาพส่วนใหญ่เป็น WPA2 PSK
+<img width="1477" height="1108" alt="21440_0" src="https://github.com/user-attachments/assets/5f24f2ad-1590-47f6-b1f3-b23626330452" />
+
+<img width="1477" height="1108" alt="21438_0" src="https://github.com/user-attachments/assets/9f0cecc0-1279-4b2b-bdfe-8259ade9f63f" />
+
+<img width="1280" height="720" alt="21439_0" src="https://github.com/user-attachments/assets/2b4e7310-171c-4acc-8aa7-56322eaa0b5b" />
+
+
