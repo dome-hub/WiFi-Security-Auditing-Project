@@ -65,7 +65,7 @@ Crack ด้วย aircrack-ng
 ## Photo
 หา BSSID: คอลัมน์นี้คือ MAC Address ของ Router (Access Point) แต่ละตัว เช่น 66:20:E1:18:2F:0E
 CH (Channel): คอลัมน์นี้คือ ช่องสัญญาณ ที่ Router ตัวนั้นกำลังทำงานอยู่ เช่น ช่อง 7, 5, 3
-ESSID: คือชื่อของ Wi-Fi (Network Name) ที่เราคุ้นเคย เช่น 5817_2.4G
+ESSID: คือชื่อของ Wi-Fi (Network Name) ที่เราคุ้นเคย เช่น 5616_5G
 ENC / AUTH: บอกถึงประเภทการเข้ารหัสความปลอดภัย ซึ่งในภาพส่วนใหญ่เป็น WPA2 PSK
 <img width="1477" height="1108" alt="21440_0" src="https://github.com/user-attachments/assets/5f24f2ad-1590-47f6-b1f3-b23626330452" />
 
